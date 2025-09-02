@@ -61,6 +61,11 @@
 5. `systemctl restart zabbix-agent ; systemctl enable zabbix-agent  запускаем процесс zabbix агента `
 
 Делаем то же самое на второй машине.
+Редактируем файл zabbix_agentd.conf 
+<img width="1335" height="820" alt="image" src="https://github.com/user-attachments/assets/0a2db143-c1cb-4d9d-960e-8124007c24af" />
+
+<img width="1700" height="791" alt="image" src="https://github.com/user-attachments/assets/8ef32ada-bae9-41ba-891b-e9101dff1da2" />
+
 
 
 `При необходимости прикрепитe сюда скриншоты
