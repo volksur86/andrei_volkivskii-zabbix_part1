@@ -30,7 +30,6 @@
 
 <img width="1282" height="863" alt="image" src="https://github.com/user-attachments/assets/1b93d0ca-dafa-4f61-9aa6-5fefd7479bb9" />
 
-![Окно авторизации]`
 <img width="1400" height="881" alt="image" src="https://github.com/user-attachments/assets/bfa32756-be98-426f-8a7e-71b82a17a370" />
 
 ---
