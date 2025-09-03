@@ -60,11 +60,17 @@
 4. `apt install zabbix-agent  устанавливаем Zabbix агент`
 5. `systemctl restart zabbix-agent ; systemctl enable zabbix-agent  запускаем процесс zabbix агента `
 
-Делаем то же самое на второй машине.
-Редактируем файл zabbix_agentd.conf 
-<img width="1335" height="820" alt="image" src="https://github.com/user-attachments/assets/0a2db143-c1cb-4d9d-960e-8124007c24af" />
+Делаем то же самое на второй машине
 
-<img width="1700" height="791" alt="image" src="https://github.com/user-attachments/assets/8ef32ada-bae9-41ba-891b-e9101dff1da2" />
+На машине, где установлен агент, файл zabbix_agentd.conf можно было и не редактировать, т.к. нв нашем сервере уже назначен адрес 127.0.0.1
+<img width="1014" height="688" alt="image" src="https://github.com/user-attachments/assets/baea1d8a-e890-4a69-a5de-2d1d5941a7a4" />
+
+раздела Configuration > Hosts, где видно, что агент подключен к серверу
+<img width="1656" height="698" alt="image" src="https://github.com/user-attachments/assets/2d86bb97-624d-4126-87ab-6c7f1b0a801e" />
+
+
+
+
 
 
 
