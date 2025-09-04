@@ -62,11 +62,18 @@
 
 Делаем то же самое на второй машине
 
-На машине, где установлен агент, файл zabbix_agentd.conf можно было и не редактировать, т.к. нв нашем сервере уже назначен адрес 127.0.0.1
-<img width="1014" height="688" alt="image" src="https://github.com/user-attachments/assets/baea1d8a-e890-4a69-a5de-2d1d5941a7a4" />
+На машине, где установлен агент, редактируем файл zabbix_agentd.conf дописываем адрес нашего Zabbix сервера 192.168.56.133
+<img width="1366" height="787" alt="image" src="https://github.com/user-attachments/assets/dc46d553-63a8-4faf-9aa1-82e8fa5e6aa5" />
 
-раздела Configuration > Hosts, где видно, что агент подключен к серверу
-<img width="1656" height="698" alt="image" src="https://github.com/user-attachments/assets/2d86bb97-624d-4126-87ab-6c7f1b0a801e" />
+раздел Configuration > Hosts, где видно, что агент подключен к серверу
+<img width="1732" height="714" alt="image" src="https://github.com/user-attachments/assets/7c77303f-ef13-49da-b0b1-6f7c9e9d70bd" />
+
+раздел Monitoring > Latest data
+<img width="1755" height="1023" alt="image" src="https://github.com/user-attachments/assets/9a801196-4f62-4988-81fb-4f7f4d14f4c1" />
+<img width="1748" height="751" alt="image" src="https://github.com/user-attachments/assets/52907377-4859-472a-8677-5ef45e2f289a" />
+
+
+
 
 
 
