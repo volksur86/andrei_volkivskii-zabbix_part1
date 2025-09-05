@@ -1,77 +1,60 @@
-# Домашнее задание к занятию "Система мониторинга Zabbix" - Волкивский Андрей
+# Домашнее задание к занятию "Система мониторинга Zabbix. Часть 2" - Волкивский Андрей
 
-### Задание 1
-Установите Zabbix Server с веб-интерфейсом.
-
-Процесс выполнения
-Выполняя ДЗ, сверяйтесь с процессом отражённым в записи лекции.
-Установите PostgreSQL. Для установки достаточна та версия, что есть в системном репозитороии Debian 11.
-Пользуясь конфигуратором команд с официального сайта, составьте набор команд для установки последней версии Zabbix с поддержкой PostgreSQL и Apache.
-Выполните все необходимые команды для установки Zabbix Server и Zabbix Web Server.
-Требования к результатам
-Прикрепите в файл README.md скриншот авторизации в админке.
-Приложите в файл README.md текст использованных команд в GitHub.
-
-`Задание выполнял на виртуальной машине Ubuntu 24.04`
-Вначале даем себе привилегии root:  sudo -s
-
-1. `apt update   обновляем apt кэш`
-2. `apt install postgresql   перед началом установки Zabix ставим PostgreSQL`
-3. `wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu24.04_all.deb скачиваем deb пакет, по ссылке которой нам подготовил конфигуратор`
-4. `dpkg -i zabbix-release_latest_7.0+ubuntu24.04_all.deb  устанавливаем скачанный пакет`
-5. `apt update`
-6. `apt install zabbix-server-pgsql zabbix-frontend-php php8.3-pgsql zabbix-apache-conf zabbix-sql-scripts устанавливаем Zabbix сервер, веб-интерфейс`
-7. `sudo -u postgres createuser --pwprompt zabbix  создаем пользователя zabbix`
-8. `sudo -u postgres createdb -O zabbix zabbix  устанавливаем и запускаем сервер БД`
-9. `zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix  импортируем начальную схему`
-10. `DBPassword=password Отредактируем файл /etc/zabbix/zabbix_server.conf`
-11. `systemctl restart zabbix-server apache2 ; systemctl enable zabbix-server apache2 запускаем процессы Zabbix сервера`
-12. `После заходим на Zabbix через веб интерфейс http://localhost/zabbix/index.php`
-
-<img width="1282" height="863" alt="image" src="https://github.com/user-attachments/assets/1b93d0ca-dafa-4f61-9aa6-5fefd7479bb9" />
-
-<img width="1400" height="881" alt="image" src="https://github.com/user-attachments/assets/bfa32756-be98-426f-8a7e-71b82a17a370" />
-
----
-
-### Задание 2
-Установите Zabbix Agent на два хоста.
+Задание 1
+Создайте свой шаблон, в котором будут элементы данных, мониторящие загрузку CPU и RAM хоста.
 
 Процесс выполнения
-Выполняя ДЗ, сверяйтесь с процессом отражённым в записи лекции.
-Установите Zabbix Agent на 2 вирт.машины, одной из них может быть ваш Zabbix Server.
-Добавьте Zabbix Server в список разрешенных серверов ваших Zabbix Agentов.
-Добавьте Zabbix Agentов в раздел Configuration > Hosts вашего Zabbix Servera.
-Проверьте, что в разделе Latest Data начали появляться данные с добавленных агентов.
-Требования к результатам
-Приложите в файл README.md скриншот раздела Configuration > Hosts, где видно, что агенты подключены к серверу
-Приложите в файл README.md скриншот лога zabbix agent, где видно, что он работает с сервером
-Приложите в файл README.md скриншот раздела Monitoring > Latest data для обоих хостов, где видны поступающие от агентов данные.
-Приложите в файл README.md текст использованных команд в GitHub
+Выполняя ДЗ сверяйтесь с процессом отражённым в записи лекции.
+В веб-интерфейсе Zabbix Servera в разделе Templates создайте новый шаблон
+Создайте Item который будет собирать информацию об загрузке CPU в процентах
+Создайте Item который будет собирать информацию об загрузке RAM в процентах
+Требования к результату
+ Прикрепите в файл README.md скриншот страницы шаблона с названием «Задание 1»
+
+ Решение 1
+ <img width="1789" height="788" alt="image" src="https://github.com/user-attachments/assets/8bbce5bd-2d73-4ee6-bf31-219e247a338f" />
+
+Задание 2
+Добавьте в Zabbix два хоста и задайте им имена <фамилия и инициалы-1> и <фамилия и инициалы-2>. Например: ivanovii-1 и ivanovii-2.
+
+Процесс выполнения
+Выполняя ДЗ сверяйтесь с процессом отражённым в записи лекции.
+Установите Zabbix Agent на 2 виртмашины, одной из них может быть ваш Zabbix Server
+Добавьте Zabbix Server в список разрешенных серверов ваших Zabbix Agentов
+Добавьте Zabbix Agentов в раздел Configuration > Hosts вашего Zabbix Servera
+Прикрепите за каждым хостом шаблон Linux by Zabbix Agent
+Проверьте что в разделе Latest Data начали появляться данные с добавленных агентов
+Требования к результату
+ Результат данного задания сдавайте вместе с заданием 3
+
+ Решение 2
+ <img width="1819" height="814" alt="image" src="https://github.com/user-attachments/assets/c0282dfc-d98c-4cad-ba25-7bba5c3e5e05" />
 
 
-`Перед началом работ склонировал первую виртуальную машину и установил на них Zabbix агента`
+ Задание 3
+Привяжите созданный шаблон к двум хостам. Также привяжите к обоим хостам шаблон Linux by Zabbix Agent.
 
-Список команд для установки агента:
+Процесс выполнения
+Выполняя ДЗ сверяйтесь с процессом отражённым в записи лекции.
+Зайдите в настройки каждого хоста и в разделе Templates прикрепите к этому хосту ваш шаблон
+Так же к каждому хосту привяжите шаблон Linux by Zabbix Agent
+Проверьте что в раздел Latest Data начали поступать необходимые данные из вашего шаблона
+Требования к результату
+ Прикрепите в файл README.md скриншот страницы хостов, где будут видны привязки шаблонов с названиями «Задание 2-3». Хосты должны иметь зелёный статус подключения
 
-1. `sudo -s  даем себе привилегии root`
-2. `wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu24.04_all.deb  устанавливаем репозиторий Zabbix`
-3. `dpkg -i zabbix-release_latest_7.0+ubuntu24.04_all.deb  после обновляем apt кэш командой apt update`
-4. `apt install zabbix-agent  устанавливаем Zabbix агент`
-5. `systemctl restart zabbix-agent ; systemctl enable zabbix-agent  запускаем процесс zabbix агента `
+ Решение 3
 
-Делаем то же самое на второй машине
+ Задание 4
+Создайте свой кастомный дашборд.
 
-На машине, где установлен агент, редактируем файл zabbix_agentd.conf дописываем адрес нашего Zabbix сервера 192.168.56.133
-<img width="1366" height="787" alt="image" src="https://github.com/user-attachments/assets/dc46d553-63a8-4faf-9aa1-82e8fa5e6aa5" />
+Процесс выполнения
+Выполняя ДЗ сверяйтесь с процессом отражённым в записи лекции.
+В разделе Dashboards создайте новый дашборд
+Разместите на нём несколько графиков на ваше усмотрение.
+Требования к результату
+ Прикрепите в файл README.md скриншот дашборда с названием «Задание 4»
 
-раздел Configuration > Hosts, где видно, что агент подключен к серверу
-<img width="1732" height="714" alt="image" src="https://github.com/user-attachments/assets/7c77303f-ef13-49da-b0b1-6f7c9e9d70bd" />
-
-раздел Monitoring > Latest data
-<img width="1755" height="1023" alt="image" src="https://github.com/user-attachments/assets/9a801196-4f62-4988-81fb-4f7f4d14f4c1" />
-<img width="1748" height="751" alt="image" src="https://github.com/user-attachments/assets/52907377-4859-472a-8677-5ef45e2f289a" />
-
+ Решение 4
 
 
 
